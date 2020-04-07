@@ -24,7 +24,7 @@ def transform_pcd(root_dir, pcd_dir, transform_dir):
 chair_id_dict = {}
 i = 0
 number_of_chair_cad_models = 236778 #from shapenet
-scenes = os.listdir(ROOTDIR)[:-1]
+scenes = os.listdir(ROOTDIR)
 for scene in scenes:
     i += 1
     print("Processing Scene: " + str(i) + " / " + str(len(scenes)))
