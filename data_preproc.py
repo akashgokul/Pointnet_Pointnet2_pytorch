@@ -5,6 +5,10 @@ import numpy as np
 
 ROOTDIR = "/global/scratch/akashgokul/mined_scannet_chairs/"
 
+print("------"*10)
+print("This code generates a csv file containing the directory of np pointcloud, np transformed pointcloud, and CAD id.")
+print("------"*10)
+
 def transform_pcd(root_dir, pcd_dir, transform_dir):
     pcd = o3d.io.read_point_cloud(pcd_dir)
     transform_matrix = np.load(transform_dir)
@@ -23,8 +27,8 @@ number_of_chair_cad_models = 236778 #from shapenet
 for root, scene_paths, filenames in os.walk(ROOTDIR):
     for scene_path in scene_paths:
         i += 1
-        print(str(i) + " / " + str(len(scene_paths)))
-        for chair_dir in os.listdir(root + scene_path):
+        print("Processing Scene: " + str(i) + " / " + str(len(scene_paths)))
+        for chair_dir in os.listdir(root + "/" + scene_path):
             chair_dir_path = root + scene_path + "/" + chair_dir
             chair_dir_contents = os.listdir(chair_dir_path)
             cad_id_file = open(chair_dir_path + "/id_cad.txt", "r")
@@ -39,6 +43,7 @@ for root, scene_paths, filenames in os.walk(ROOTDIR):
 data = pd.DataFrame.from_dict(data, orient='index')
 data_dir = ROOTDIR + "data.csv"
 data.to_csv(path=data_dir)
+print("------"*10)
 print("Done! \n Data can be found at: " + data_dir)
 
 
