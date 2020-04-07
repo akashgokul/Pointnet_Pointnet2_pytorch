@@ -44,7 +44,7 @@ for root, scene_paths, filenames in os.walk(ROOTDIR):
 
 data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
 data_dir = ROOTDIR + "data.csv"
-data.to_csv(path=data_dir)
+data.to_csv(path_or_buf=data_dir)
 print("------"*10)
 print("Done! \n Data can be found at: " + data_dir)
 
