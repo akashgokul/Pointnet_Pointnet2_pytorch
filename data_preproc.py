@@ -24,23 +24,20 @@ def transform_pcd(root_dir, pcd_dir, transform_dir):
 chair_id_dict = {}
 i = 0
 number_of_chair_cad_models = 236778 #from shapenet
-for root, scene_paths, filenames in os.walk(ROOTDIR):
-    if(i == 292):
-        break
-    for scene_path in scene_paths:
-        i += 1
-        print("Processing Scene: " + str(i) + " / " + str(len(scene_paths)))
-        for chair_dir in os.listdir(root + "/" + scene_path):
-            chair_dir_path = root + scene_path + "/" + chair_dir
-            chair_dir_contents = os.listdir(chair_dir_path)
-            cad_id_file = open(chair_dir_path + "/id_cad.txt", "r")
-            cad_id = cad_id_file.readline()
+for scene_path in os.listdir(ROOTDIR):
+    i += 1
+    print("Processing Scene: " + str(i) + " / " + str(len(scene_paths)))
+    for chair_dir in os.listdir(ROOTDIR + "/" + scene_path):
+        chair_dir_path = ROOTDIR + scene_path + "/" + chair_dir
+        chair_dir_contents = os.listdir(chair_dir_path)
+        cad_id_file = open(chair_dir_path + "/id_cad.txt", "r")
+        cad_id = cad_id_file.readline()
 
-            pointcloud_dir = chair_dir_path + "/model_normalized.ply"
-            np_transform_mat_dir = chair_dir_path + "/cad2points_trafo.npy"
+        pointcloud_dir = chair_dir_path + "/model_normalized.ply"
+        np_transform_mat_dir = chair_dir_path + "/cad2points_trafo.npy"
 
-            orig_np_dir, transformed_np_dir = transform_pcd(chair_dir_path, pointcloud_dir,np_transform_mat_dir)
-            chair_id_dict[chair_dir_path + "/" + orig_np_dir] = [chair_dir_path + "/" + transformed_np_dir,  cad_id]
+        orig_np_dir, transformed_np_dir = transform_pcd(chair_dir_path, pointcloud_dir,np_transform_mat_dir)
+        chair_id_dict[chair_dir_path + "/" + orig_np_dir] = [chair_dir_path + "/" + transformed_np_dir,  cad_id]
 
 data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
 data_dir = ROOTDIR + "data.csv"
