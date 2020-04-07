@@ -6,7 +6,7 @@ ROOTDIR = "/global/scratch/akashgokul/mined_scannet_chairs/"
 chair_id_dict = {}
 number_of_chair_cad_models = 236778 #from shapenet
 for root, scene_path, filenames in os.walk(ROOTDIR):
-    print("SCENE PATH: " + scene_path)
+    print(scene_path)
     for chair_path, chair_dir_name, chair_files in os.walk(scene_path):
         chair_dir_files = os.listdir(chair_path)
         print("CHAIR PATH: " + chair_path)
