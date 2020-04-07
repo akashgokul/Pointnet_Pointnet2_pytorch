@@ -8,7 +8,7 @@ number_of_chair_cad_models = 236778 #from shapenet
 for root, scene_paths, filenames in os.walk(ROOTDIR):
     for scene_path in scene_paths:
         for chair_folder in os.listdir(root + scene_path):
-            print(chair_folder)
+            print(os.listdir(root + scene_path + chair_folder))
             break
         break
     break
