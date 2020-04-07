@@ -43,6 +43,6 @@ data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
 data_dir = ROOTDIR + "data.csv"
 data.to_csv(path_or_buf=data_dir)
 print("------"*10)
-print("Done! \n Data can be found at: " + data_dir)
+print("Done! \n Data can be found at: " + data_dir + "/n")
 
 
