@@ -25,6 +25,8 @@ chair_id_dict = {}
 i = 0
 number_of_chair_cad_models = 236778 #from shapenet
 for root, scene_paths, filenames in os.walk(ROOTDIR):
+    if(i == 292):
+        break
     for scene_path in scene_paths:
         i += 1
         print("Processing Scene: " + str(i) + " / " + str(len(scene_paths)))
