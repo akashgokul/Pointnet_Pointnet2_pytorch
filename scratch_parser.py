@@ -1,7 +1,7 @@
 import os
 import pandas
 
-ROOTDIR = "/global/scratch/akash/mined_scannet_chairs"
+ROOTDIR = "/global/scratch/akashgokul/mined_scannet_chairs"
 
 chair_id_dict = {}
 number_of_chair_cad_models = 236778 #from shapenet
