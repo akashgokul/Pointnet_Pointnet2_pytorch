@@ -24,11 +24,12 @@ def transform_pcd(root_dir, pcd_dir, transform_dir):
 chair_id_dict = {}
 i = 0
 number_of_chair_cad_models = 236778 #from shapenet
-for scene_path in os.listdir(ROOTDIR):
+scenes = os.listdir(ROOTDIR)
+for scene in scenes:
     i += 1
-    print("Processing Scene: " + str(i) + " / " + str(len(scene_paths)))
-    for chair_dir in os.listdir(ROOTDIR + "/" + scene_path):
-        chair_dir_path = ROOTDIR + scene_path + "/" + chair_dir
+    print("Processing Scene: " + str(i) + " / " + str(len(scenes)))
+    for chair_dir in os.listdir(ROOTDIR + "/" + scene):
+        chair_dir_path = ROOTDIR + scene + "/" + chair_dir
         chair_dir_contents = os.listdir(chair_dir_path)
         cad_id_file = open(chair_dir_path + "/id_cad.txt", "r")
         cad_id = cad_id_file.readline()
