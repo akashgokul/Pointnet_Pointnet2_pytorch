@@ -9,5 +9,5 @@ for root, scene_paths, filenames in os.walk(ROOTDIR):
     for scene_path in scene_paths:
         for chair_folder in os.listdir(root + scene_path):
             print(chair_folder)
-            break
+            exit
 
