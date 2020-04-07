@@ -42,7 +42,7 @@ for root, scene_paths, filenames in os.walk(ROOTDIR):
             orig_np_dir, transformed_np_dir = transform_pcd(chair_dir_path, pointcloud_dir,np_transform_mat_dir)
             chair_id_dict[chair_dir_path + "/" + orig_np_dir] = [chair_dir_path + "/" + transformed_np_dir,  cad_id]
 
-data = pd.DataFrame.from_dict(data, orient='index')
+data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
 data_dir = ROOTDIR + "data.csv"
 data.to_csv(path=data_dir)
 print("------"*10)
