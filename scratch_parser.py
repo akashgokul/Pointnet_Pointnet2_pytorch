@@ -10,7 +10,7 @@ for root, scene_paths, filenames in os.walk(ROOTDIR):
     for scene_path in scene_paths:
         for chair_path, chair_dir_name, chair_files in os.walk(scene_path):
             chair_dir_files = os.listdir(chair_path)
-            print("CHAIR PATH: " + chair_path)
+            print("SCENE: " + scene_path + " | CHAIR PATH: " + chair_path)
             cad_id_file = open(chair_path + "/id_cad.txt", "r")
             cad_id = cad_id_file.readline()
             print("CAD ID: " + cad_id)
