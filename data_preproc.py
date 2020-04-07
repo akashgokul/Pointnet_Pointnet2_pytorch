@@ -7,6 +7,7 @@ ROOTDIR = "/global/scratch/akashgokul/mined_scannet_chairs/"
 
 def transform_pcd(root_dir, pcd_dir, transform_dir):
     pcd = o3d.io.read_point_cloud(pcd_dir)
+    print(transform_dir)
     transform_matrix = np.load(transform_dir)
     pcd_transformed = pcd.transform(transform_matrix)
     np_pcd = np.asarray(pcd.points)
@@ -26,8 +27,10 @@ for root, scene_paths, filenames in os.walk(ROOTDIR):
             chair_dir_contents = os.listdir(chair_dir_path)
             cad_id_file = open(chair_dir_path + "/id_cad.txt", "r")
             cad_id = cad_id_file.readline()
+
             pointcloud_dir = chair_dir_path + "/model_normalized.ply"
             np_transform_mat_dir = chair_dir_path + "/cad2points_transfo.npy"
+
             orig_np_dir, transformed_np_dir = transform_pcd(chair_dir_path, pointcloud_dir,np_transform_mat_dir)
             chair_id_dict[chair_dir_path + "/" + orig_np_dir] = [chair_dir_path + "/" + transformed_np_dir,  cad_id]
 
