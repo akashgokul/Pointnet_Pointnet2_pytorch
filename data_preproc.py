@@ -34,6 +34,7 @@ for scene in scenes:
         
 
 data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
+print(data)
 data_dir = ROOTDIR + "data.csv"
 data.to_csv(path_or_buf=data_dir)
 print("------"*10)
