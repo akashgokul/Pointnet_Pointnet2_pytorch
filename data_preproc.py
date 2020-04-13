@@ -11,9 +11,10 @@ print("------"*10)
 
 def transform_pcd(root_dir, ply_dir):
     mesh = o3d.io.read_triangle_mesh(ply_dir)
-    obj_dir = root_dir + "model.obj"
-    o3d.io.write_triangle_mesh(root_dir + "model.obj", mesh)
+    obj_dir = root_dir + "/model.obj"
+    o3d.io.write_triangle_mesh(obj_dir, mesh)
     print(obj_dir)
+    return obj_dir
 
 chair_id_dict = {}
 i = 0
@@ -29,8 +30,8 @@ for scene in scenes:
         cad_id = cad_id_file.readline()
 
         ply_dir = chair_dir_path + "/model_normalized.ply"
-        transform_pcd(chair_dir_path, ply_dir)
-        #chair_id_dict = 
+        obj_dir = transform_pcd(chair_dir_path, ply_dir)
+        chair_id_dict[obj_dir] = cad_id
         
 
 # data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
