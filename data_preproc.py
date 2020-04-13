@@ -6,7 +6,7 @@ import numpy as np
 ROOTDIR = "/global/scratch/akashgokul/mined_scannet_chairs/"
 
 print("------"*10)
-print("This code generates a csv file containing the directory of np pointcloud, np transformed pointcloud, and CAD id.")
+print("This code generates a csv file containing the directory of each obj file and it's CAD id")
 print("------"*10)
 
 def transform_pcd(root_dir, ply_dir):
