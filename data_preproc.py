@@ -30,7 +30,7 @@ for scene in scenes:
 
         ply_dir = chair_dir_path + "/model_normalized.ply"
         transform_pcd(chair_dir_path, ply_dir)
-        chair_id_dict = 
+        #chair_id_dict = 
         
 
 # data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
